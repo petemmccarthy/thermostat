@@ -13,6 +13,17 @@ describe("Thermostat", function() {
       expect(thermostat.powerSavingMode).toBe(true);
    });
 
+   describe('maximum temperature', function(){
+    it('is 25 degrees with PSM on', function(){
+      expect(thermostat.maximumTemperature()).toEqual(25);
+    })
+
+    it('is 32 degrees with PSM off', function(){
+      thermostat.powerSavingMode = false;
+      expect(thermostat.maximumTemperature()).toEqual(32);
+    })
+  })
+
    describe('increasing the temperature', function() {
       describe('PSM off', function() {
          beforeEach(function() {
