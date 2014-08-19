@@ -1,0 +1,89 @@
+<!doctype>
+<html>
+	<head>
+		<title>Thermostat</title>
+		<meta charset='utf8'>
+		<style>
+			body {
+				margin: 20px;
+				font-size: 30px;
+				font-family: 'Helvetica Neue';
+			}
+
+		.inefficient {
+        color: red;
+      }
+
+      .average {
+        color: orange;
+      }
+
+      .efficient {
+        color: green;
+      }
+
+		</style>
+	</head>
+
+	<body>
+		<h2>
+			<span class='temperature'></span>°C
+		</h2>
+			<button class='increaseTemp'>+</button>
+			<button class='decreaseTemp'>-</button>
+			<button class='reset'>Reset</button>
+			<br>
+			<input type='checkbox' id='psm' checked>
+			<label for='psm'>Power Saving Mode</label>
+
+		<script src='Thermostat.js'></script>
+		<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+		<!-- what doe sthis do???? -->
+		<script>
+
+			function updateTemperature(thermostat) {
+				$('.temperature').text(thermostat.temperature);
+				$('h2').attr('class', '').addClass(thermostat.energyUsage());
+				// the .attr('class', '') means remove all the classes then add the class .energyUsage
+
+				$.post('http://localhost:4567/temperature_change', { newTemperature: thermostat.temperature })
+			}
+			// now let css dictate the presentation of these classes
+
+			$(document).ready(function() {
+				// 1st thing is to create a new instance of Thermostat, then target the class
+				var thermostat = new Thermostat();
+				updateTemperature(thermostat)
+
+
+				$('.increaseTemp').on('click', function() {
+					thermostat.increaseTemperature();
+					
+				})
+
+				$('.decreaseTemp').on('click', function() {
+					thermostat.decreaseTemperature();
+					
+				})
+
+				$('.reset').on('click', function() {
+					thermostat.reset();
+					
+				})
+
+				$('button').on('click', function(){
+        			updateTemperature(thermostat);
+      		})
+
+				$('#psm').on('change', function() {
+					thermostat.powerSavingMode = $(this).prop('checked'); 
+					// prop method returns true/false if teh box is checked or not
+				})
+			})
+		</script>
+	</body>
+</html>
+
+
+
+

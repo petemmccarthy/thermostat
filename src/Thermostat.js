@@ -29,6 +29,15 @@ Thermostat.prototype.energyUsage = function() {
 	return 'inefficient'
 }
 
+// You should build your model/spec beofre jumping straight into
+// html and mixing everything together. Keeping all of your
+// business logic outside.
+// Everything we can test is tested
+
+
+
+
+
 
 
 
