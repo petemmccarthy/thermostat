@@ -29,17 +29,10 @@ Thermostat.prototype.energyUsage = function() {
 	return 'inefficient'
 }
 
+// MISSING FUNCTIONALITY - when psm is switched on the temp should return to within the threshold
+
 // You should build your model/spec beofre jumping straight into
 // html and mixing everything together. Keeping all of your
 // business logic outside.
 // Everything we can test is tested
 
-
-
-
-
-
-
-
-
-// 27:00mins into the video
