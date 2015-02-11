@@ -21,3 +21,20 @@ Technologies and methods used:
 Javascript and JQuery
 Tested in Jasmine
 Styled with HTML and CSS
+
+
+##### Instructions to run
+
+Clone the repository:
+
+```
+$ git clone https://github.com/petermccarthy49/thermostat.git
+```
+
+Change into the directory and run the Jasmine tests:
+
+```
+$ cd thermostat
+
+$ open SpecRunner.html
+```
