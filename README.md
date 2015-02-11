@@ -2,7 +2,7 @@ JavaScript Thermostat
 =====================
 
 
-Specifications used to design the thermostat:
+##### Specifications used to design the thermostat:
 
 - Thermostat starts at 20 degrees
 - You can increase the temp with the up button
@@ -15,7 +15,7 @@ Specifications used to design the thermostat:
 - The thermostat should color the display based on energy usage - < 18 is green, < 25 is yellow, otherwise red
 - After every temperature change, the thermostat makes a POST request to localhost:4567/temperature_change, with the new temperature
 
-Technologies and methods used:
+##### Technologies and methods used:
 
 - Javascript and JQuery
 - Tested in Jasmine
