@@ -2,7 +2,7 @@ JavaScript Thermostat
 =====================
 
 
-Specifications used to desiagn the thermostat:
+Specifications used to design the thermostat:
 
 - Thermostat starts at 20 degrees
 - You can increase the temp with the up button
