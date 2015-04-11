@@ -1,19 +1,19 @@
 describe("Thermostat", function() {
   var thermostat;
 
-   beforeEach(function() {
-      thermostat = new Thermostat;    
-   });
+  beforeEach(function() {
+    thermostat = new Thermostat;    
+  });
 
-   it("should begin at 20 degrees", function() {
+    it("should begin at 20 degrees", function() {
       expect(thermostat.temperature).toEqual(20);
-   });
+    });
 
-   it("should begin with a PSM on", function() {
+    it("should begin with a PSM on", function() {
       expect(thermostat.powerSavingMode).toBe(true);
-   });
+    });
 
-   describe('maximum temperature', function(){
+  describe('maximum temperature', function(){
     it('is 25 degrees with PSM on', function(){
       expect(thermostat.maximumTemperature()).toEqual(25);
     })
@@ -24,67 +24,62 @@ describe("Thermostat", function() {
     })
   })
 
-   describe('increasing the temperature', function() {
-      describe('PSM off', function() {
-         beforeEach(function() {
-            thermostat.powerSavingMode = false;
-         });
+  describe('increasing the temperature', function() {
+    describe('PSM off', function() {
 
-         it('increases if < 32 degrees', function() {
-            thermostat.temperature = 25;
+      beforeEach(function() {
+        thermostat.powerSavingMode = false;
+      });
 
-            thermostat.increaseTemperature()
-            expect(thermostat.temperature).toEqual(26);
-         })
-
-         it('does not increase if the temperature is >= 32 degrees', function() {
-            thermostat.temperature = 32;
-
-            thermostat.increaseTemperature()
-            expect(thermostat.temperature).toEqual(32);
-         })
-      })
-   })
-
-    describe('PSM on', function() {
-         
-         it('increases if < 25 degrees', function() {
-            thermostat.increaseTemperature()
-            expect(thermostat.temperature).toEqual(21);
-         })
-
-         it('does not increase if the temperature is >= 25 degrees', function() {
-            thermostat.temperature = 25;
-
-            thermostat.increaseTemperature()
-            expect(thermostat.temperature).toEqual(25);
-         })
+      it('increases if < 32 degrees', function() {
+        thermostat.temperature = 25;
+        thermostat.increaseTemperature()
+        expect(thermostat.temperature).toEqual(26);
       })
 
-   describe('decreasing the temperature', function() {
-      it('decreases if > 10 degrees', function() {
-         thermostat.decreaseTemperature()
-         expect(thermostat.temperature).toEqual(19);
+      it('does not increase if the temperature is >= 32 degrees', function() {
+        thermostat.temperature = 32;
+        thermostat.increaseTemperature()
+        expect(thermostat.temperature).toEqual(32);
       })
+    })
+  })
 
-      it('does not decrease if the temperature is <= 10 degrees', function() {
-         thermostat.temperature = 10;
+  describe('PSM on', function() {         
+    it('increases if < 25 degrees', function() {
+      thermostat.increaseTemperature()
+      expect(thermostat.temperature).toEqual(21);
+    })
 
-         thermostat.decreaseTemperature()
-         expect(thermostat.temperature).toEqual(10);
-      })
-   })
+    it('does not increase if the temperature is >= 25 degrees', function() {
+      thermostat.temperature = 25;
+      thermostat.increaseTemperature()
+      expect(thermostat.temperature).toEqual(25);
+    })
+  })
 
-   describe('resetting the temperature', function() {
+  describe('decreasing the temperature', function() {
+    it('decreases if > 10 degrees', function() {
+      thermostat.decreaseTemperature()
+      expect(thermostat.temperature).toEqual(19);
+    })
+
+    it('does not decrease if the temperature is <= 10 degrees', function() {
+      thermostat.temperature = 10;
+      thermostat.decreaseTemperature()
+      expect(thermostat.temperature).toEqual(10);
+    })
+  })
+
+  describe('resetting the temperature', function() {
     it('resets to 20 degrees', function() {
       thermostat.temperature = 10;
       thermostat.reset();
-
       expect(thermostat.temperature).toEqual(20);
     })
-   })
+  })
 
-   describe('energy usage', function() {
+  describe('energy usage', function() {
     it('is efficient if < 18', function() {
       thermostat.temperature = 15;
       expect(thermostat.energyUsage()).toEqual('efficient');
@@ -99,8 +94,7 @@ describe("Thermostat", function() {
       thermostat.temperature = 26;
       expect(thermostat.energyUsage()).toEqual('inefficient');
     })
-
-   })
+  })
 
 });
 
